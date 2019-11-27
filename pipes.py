@@ -28,9 +28,3 @@ def ColebrookWhite(velocity,diameter,roughness,density,viscosity):
     viscosity = float(viscosity)
     reynolds = velocity*diameter*density/viscosity
     return modifiedFalsePosition(diameter,roughness,reynolds)
-
-def SwameeJain(diameter, roughness, reynolds):
-    return 0.25 / (math.log10((roughness/1000)/(3.7*diameter)+5.74/(reynolds**0.9)))**2
-
-def CalculateHL(friction,velocity,diameter):
-    return 100 * friction * 1 / (2*9.81) * velocity**2/diameter
