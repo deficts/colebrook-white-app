@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Pipes Friction</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body style="background:#F2F2F2;">
+  <div class="container-fluid mt-3">
+    <h1 class="text-center">Pipes Friction</h1>
+    <form class="card p-4" method="POST">
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="velocity">Velocity</label>
+          {% if pipe==None %}
+          <input type="text" name="Velocity" class="form-control" id="velocity" placeholder="Please enter velocity in m/s">
+          {% else %}
+          <input value={{pipe.velocity}} type="text" name="Velocity" class="form-control" id="velocity" placeholder="Please enter velocity in m/s">
+          {% endif %}
+        </div>
+        <div class="form-group col-6">
+          <label for="diameter">Diameter</label>
+          {% if pipe==None %}
+            <input type="text" name="Diameter" class="form-control" id="diameter" placeholder="Please enter Pipe Internal Diameter in mm">
+          {% else %}
+            <input value={{pipe.diameter}} type="text" name="Diameter" class="form-control" id="diameter" placeholder="Please enter Pipe Internal Diameter in mm">
+          {% endif %}
+        </div>
+        <div class="form-group col-6">
+          <label for="roughness">Roughness</label>
+          {% if pipe==None %}
+          <input  type="text" name="Roughness" class="form-control" id="roughness" placeholder="Please enter Material Roughness in mm">
+          {% else %}
+          <input value={{pipe.roughness}} type="text" name="Roughness" class="form-control" id="roughness" placeholder="Please enter Material Roughness in mm">
+          {% endif %}
+        </div>
+        <div class="form-group col-6">
+          <label for="density">Density</label>
+          {% if pipe==None %}
+          <input type="text" name="Density" class="form-control" id="density" placeholder="Please enter Fluid Density in kg/m3">
+          {% else %}
+          <input value={{pipe.density}} type="text" name="Density" class="form-control" id="density" placeholder="Please enter Fluid Density in kg/m3">
+          {% endif %}
+        </div>
+        <div class="form-group col-6">
+          <label for="viscosity">Viscosity</label>
+          {% if pipe==None %}
+          <input type="text" name="Viscosity" class="form-control" id="viscosity" placeholder="Please enter Fluid Viscosity in Pa">
+          {% else %}
+          <input value={{pipe.viscosity}} type="text" name="Viscosity" class="form-control" id="viscosity" placeholder="Please enter Fluid Viscosity in Pa">
+          {% endif %}
+        </div>
+        <div class="form-group col-12">
+          <button type="submit" value="submit" name="button" class="form-control button btn-success">Calculate</button>
+        </div>
+      </div>
+    </form>
+    <div class="container-fluid mt-3">
+      <div class="card p-4">
+        <h3>The Colebrook-White friction factor is:</h3>
+        <div class="row">
+          <div class="col">
+            <p>{{cw}}</p>
+          </div>
+          <div class="col text-center">
+            <img src="../static/new_plot.png" alt="plot" style="width:50%;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
